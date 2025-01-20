@@ -54,5 +54,7 @@ describe("assetAllocationPercentage function test", () =>{
         }
 
         expect(assetAllocationPercentage(assets)).toBe("10% of your money is in Stocks, 7% in Bonds and the rest, 83% is in your House.")
+        expect(assetAllocationPercentage({house:0, stock:20000, bond:15000})).toBe(
+            "57% of your money is in Stocks, 43% in Bonds and the rest, 0% is in your House.")
     })
 })
