@@ -73,4 +73,18 @@ function largestHolding(assets:Assets): any {
     }
 }
 
-export default { calculatePortfolioPerformance, largestHolding }
+function assetAllocationPercentage(assets:Assets): string {
+    let bondValue:number = assets.bond
+    let houseValue:number = assets.house
+    let stockValue:number = assets.stock
+
+    let totalValue:number = (bondValue + houseValue + stockValue)
+
+    let bondPercentage:number  = Math.round((bondValue/totalValue) * 100)
+    let housePercentage:number = Math.round((houseValue/totalValue) * 100 )
+    let stockPercentage:number = Math.round((stockValue/totalValue) * 100 )
+
+    return `${stockPercentage}% of your money is in Stocks, ${bondPercentage}% in Bonds and the rest, ${housePercentage} is in your House.`
+}
+
+export default { calculatePortfolioPerformance, largestHolding, assetAllocationPercentage}
