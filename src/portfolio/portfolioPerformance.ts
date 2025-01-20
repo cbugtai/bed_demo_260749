@@ -1,6 +1,6 @@
-export function calculatePortfolioPerformance(): any {
-	let initialInvestment:number = 10000;
-	let currentValue:number = 12000;
+export function calculatePortfolioPerformance(initial:number, current:number): any {
+	let initialInvestment:number = initial;
+	let currentValue:number = current;
 
 	const profitOrLoss:number = initialInvestment - currentValue;
 
@@ -42,3 +42,5 @@ export function calculatePortfolioPerformance(): any {
 		performanceSummary,
 	};
 }
+
+export default calculatePortfolioPerformance
