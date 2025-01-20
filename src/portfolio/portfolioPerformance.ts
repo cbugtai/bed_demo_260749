@@ -1,3 +1,5 @@
+import assert from "assert";
+
 export function calculatePortfolioPerformance(initial:number, current:number): any {
 	let initialInvestment:number = initial;
 	let currentValue:number = current;
@@ -43,4 +45,32 @@ export function calculatePortfolioPerformance(initial:number, current:number): a
 	};
 }
 
-export default calculatePortfolioPerformance
+interface Assets {
+    house:number;
+    stock:number;
+    bond:number;
+}
+
+function largestHolding(assets:Assets): any {
+    if (assets.house > assets.stock){
+        if (assets.house > assets.bond){
+            return "House"
+        } else {
+            return "Bond"
+        }
+    } else if (assets.stock > assets.bond){
+        if (assets.stock > assets.house){
+            return "Stock"
+        } else {
+            return "House"
+        }
+    } else if (assets.bond > assets.house){
+        if (assets.bond > assets.stock){
+            return "Bond"
+        } else {
+            return "Stock"
+        }
+    }
+}
+
+export default { calculatePortfolioPerformance, largestHolding }

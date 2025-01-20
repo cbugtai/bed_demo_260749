@@ -1,4 +1,4 @@
-import portfolioPerformance from "../src/portfolio/portfolioPerformance";
+import { calculatePortfolioPerformance } from "../src/portfolio/portfolioPerformance";
 
 describe("calculatePortfolioPerformance function test", () => {
     it("Performance gain test", () =>{
@@ -10,7 +10,7 @@ describe("calculatePortfolioPerformance function test", () => {
             performanceSummary: "The portfolio has gained significantly"
         }
 
-        expect(portfolioPerformance(10000, 12000)).toStrictEqual(expectedOutput)
+        expect(calculatePortfolioPerformance(10000, 12000)).toStrictEqual(expectedOutput);
     })
 
     it("Performance loss test", () =>{
@@ -22,7 +22,7 @@ describe("calculatePortfolioPerformance function test", () => {
             performanceSummary: "The portfolio has lost slightly"
         }
 
-        expect(portfolioPerformance(10000, 9500)).toStrictEqual(expectedOutput)
+        expect(calculatePortfolioPerformance(10000, 9500)).toStrictEqual(expectedOutput);
     })
     it("Performance no change test", () =>{
         const expectedOutput = {
@@ -33,6 +33,6 @@ describe("calculatePortfolioPerformance function test", () => {
             performanceSummary: "The portfolio has not changed"
         }
 
-        expect(portfolioPerformance(10000, 10000)).toStrictEqual(expectedOutput)
+        expect(calculatePortfolioPerformance(10000, 10000)).toStrictEqual(expectedOutput);
     })
 })
