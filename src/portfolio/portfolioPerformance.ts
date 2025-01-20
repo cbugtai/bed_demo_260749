@@ -1,5 +1,3 @@
-import assert from "assert";
-
 export function calculatePortfolioPerformance(initial:number, current:number): any {
 	let initialInvestment:number = initial;
 	let currentValue:number = current;
@@ -51,7 +49,7 @@ interface Assets {
     bond:number;
 }
 
-function largestHolding(assets:Assets): any {
+export function largestHolding(assets:Assets): any {
     if (assets.house > assets.stock){
         if (assets.house > assets.bond){
             return "House"
@@ -73,7 +71,7 @@ function largestHolding(assets:Assets): any {
     }
 }
 
-function assetAllocationPercentage(assets:Assets): string {
+export function assetAllocationPercentage(assets:Assets): string {
     let bondValue:number = assets.bond
     let houseValue:number = assets.house
     let stockValue:number = assets.stock
@@ -84,7 +82,7 @@ function assetAllocationPercentage(assets:Assets): string {
     let housePercentage:number = Math.round((houseValue/totalValue) * 100 )
     let stockPercentage:number = Math.round((stockValue/totalValue) * 100 )
 
-    return `${stockPercentage}% of your money is in Stocks, ${bondPercentage}% in Bonds and the rest, ${housePercentage} is in your House.`
+    return `${stockPercentage}% of your money is in Stocks, ${bondPercentage}% in Bonds and the rest, ${housePercentage}% is in your House.`
 }
 
 export default { calculatePortfolioPerformance, largestHolding, assetAllocationPercentage}

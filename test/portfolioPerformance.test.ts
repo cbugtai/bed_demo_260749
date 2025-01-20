@@ -1,4 +1,4 @@
-import { calculatePortfolioPerformance } from "../src/portfolio/portfolioPerformance";
+import { calculatePortfolioPerformance, largestHolding, assetAllocationPercentage } from "../src/portfolio/portfolioPerformance";
 
 describe("calculatePortfolioPerformance function test", () => {
     it("Performance gain test", () =>{
@@ -34,5 +34,25 @@ describe("calculatePortfolioPerformance function test", () => {
         }
 
         expect(calculatePortfolioPerformance(10000, 10000)).toStrictEqual(expectedOutput);
+    })
+})
+
+describe("largestholding function test", () => {
+    it("Should return largest asset", () => {
+        expect(largestHolding({house:120000, stock:15000, bond:10000})).toBe("House")
+        expect(largestHolding({house:10000, stock:120000, bond:15000})).toBe("Stock")
+        expect(largestHolding({house:15000, stock:10000, bond:120000})).toBe("Bond")
+    })
+})
+
+describe("assetAllocationPercentage function test", () =>{
+    it("Should return asset allocation percentages", () => {
+        const assets = {
+            house:120000, 
+            stock:15000, 
+            bond:10000
+        }
+
+        expect(assetAllocationPercentage(assets)).toBe("10% of your money is in Stocks, 7% in Bonds and the rest, 83% is in your House.")
     })
 })
