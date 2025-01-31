@@ -7,6 +7,8 @@ import express, { Express } from "express";
 import setupSwagger from "../config/swagger";
 import { timeStamp } from "console";
 
+import * as portfolio from "./portfolio/portfolioPerformance"
+
 const app: Express = express();
 
 setupSwagger(app);
@@ -36,6 +38,22 @@ app.get("/api/v1/health", (req, res) => {
         timestamp: new Date().toISOString(),
         version: "1.0.0"
     })
+})
+
+
+app.get("/portfolio", (req, res) => {
+    const result: any = portfolio.calculatePortfolioPerformance(10000, 12000)
+    res.send(`Portfolio Summary = ${result.json}`)
+})
+
+const assets = {
+    house:120000, 
+    stock:15000, 
+    bond:10000
+}
+app.get("/portfolio/allocation", (req, res) => {
+    const result: any = portfolio.assetAllocationPercentage(assets)
+    res.send(`Asset Allocation Percentages = ${result.json}`)
 })
 
 export default app;
