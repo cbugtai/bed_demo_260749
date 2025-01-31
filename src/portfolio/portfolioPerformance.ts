@@ -1,3 +1,10 @@
+/**
+ * calculate the performance of a financial portfolio and return performance Summaries
+ * 
+ * @param initial - starting balance of the portfolio
+ * @param current - current balance of the portfolio
+ * @returns - sumamry of the portfolio
+ */
 export function calculatePortfolioPerformance(initial:number, current:number): any {
 	let initialInvestment:number = initial;
 	let currentValue:number = current;
@@ -49,6 +56,12 @@ interface Assets {
     bond:number;
 }
 
+/**
+ * Identifies the Largest Holding you have
+ * 
+ * @param assets - The holdings you have and how much they're worth
+ * @returns {string} - The largest holdingamong your assets 
+ */
 export function largestHolding(assets:Assets): any {
     if (assets.house > assets.stock){
         if (assets.house > assets.bond){
@@ -71,6 +84,12 @@ export function largestHolding(assets:Assets): any {
     }
 }
 
+/**
+ * Returns the percentage of your totla portfolio is invested in each asset type
+ * 
+ * @param assets - The holdings you have and how much they're worth
+ * @returns {string} - a summary of how much % each asset is worth compared to your total portfolio
+ */
 export function assetAllocationPercentage(assets:Assets): string {
     let bondValue:number = assets.bond
     let houseValue:number = assets.house
